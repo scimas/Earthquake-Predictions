@@ -40,9 +40,8 @@ roll_windows = [100, 500, 1000, 2000, 4000, 10000]
 columns.extend(['rolling_mean_' + str(i) for i in roll_windows])
 columns.extend(['rolling_std_' + str(i) for i in roll_windows])
 
-df = pd.read_csv('data/train.csv')
-
 df_train = pd.DataFrame(dtype=np.float, columns=columns)
+
 
 def generate_features(chunk):
     mean = chunk['acoustic_data'].mean()
@@ -89,9 +88,12 @@ def generate_features(chunk):
         )
     return result
 
+
+# df = pd.read_csv('data/train.csv')
+
 # for i in range(len(df)//n):
 #     df_train.loc[i, columns] = generate_features(df[i*n:(i+1)*n])
-#     df_train.loc[i, 'time_to_failure'] = df['time_to_failure'].values[-1]
+#     df_train.loc[i, 'time_to_failure'] = df.loc[(i+1)*n - 1, 'time_to_failure']
 
 i = 0
 for chunk in pd.read_csv('data/train.csv', chunksize=n):
