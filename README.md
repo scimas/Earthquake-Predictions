@@ -7,7 +7,7 @@ This is our attempt at the Los Alamos National Laboratory's [Kaggle competetion]
 ## Usage
 
 1. The data is about 9 GB in size (2.3 GB compressed) and so has not been included in the repository.
-- The file structure should be:
+   - The directory structure should be:
 
 ```
     .
